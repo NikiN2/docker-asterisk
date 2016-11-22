@@ -39,6 +39,16 @@ RUN menuselect/menuselect \
   --enable res_http_websocket \
   --enable res_hep_pjsip \
   --enable res_hep_rtcp \
+  --enable CORE-SOUNDS-RU-WAV \
+  --enable CORE-SOUNDS-RU-ULAW \
+  --enable CORE-SOUNDS-RU-ALAW \
+  --enable CORE-SOUNDS-RU-GSM \
+  --enable CORE-SOUNDS-RU-G729 \
+  --enable CORE-SOUNDS-RU-G722 \
+  --enable CORE-SOUNDS-RU-SLN16 \
+  --enable CORE-SOUNDS-RU-SIREN7 \
+  --enable CORE-SOUNDS-RU-SIREN14 \
+  
   menuselect.makeopts
 
 # Continue with a standard make.
