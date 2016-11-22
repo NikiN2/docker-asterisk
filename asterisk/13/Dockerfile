@@ -48,7 +48,7 @@ RUN menuselect/menuselect \
   --enable CORE-SOUNDS-RU-SLN16 \
   --enable CORE-SOUNDS-RU-SIREN7 \
   --enable CORE-SOUNDS-RU-SIREN14 \
-  --enable app-meetme\
+  --enable app_meetme\
    menuselect.makeopts
 
 # Continue with a standard make.
