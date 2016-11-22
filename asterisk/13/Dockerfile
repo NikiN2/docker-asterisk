@@ -4,7 +4,7 @@ ENV build_date 2016-05-15
 
 RUN yum update -y
 RUN yum install -y epel-release
-RUN yum install git kernel-headers gcc gcc-c++ cpp ncurses ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar jansson-devel make bzip2 -y
+RUN yum install git kernel-headers gcc gcc-c++ cpp ncurses ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar jansson-devel make bzip2 "kernel-devel-uname-r == $(uname -r)" -y
 
 WORKDIR /tmp
 # Get pj project
@@ -20,9 +20,15 @@ RUN ldconfig
 RUN ldconfig -p | grep pj
 
 ENV AUTOBUILD_UNIXTIME 123124
+
+# Build dahdi project
 WORKDIR /tmp
+git clone https://git.asterisk.org/dahdi/linux dahdi-linux
+WORKDIR /tmp/asterisk
+RUN ./make && ./make install  1> /dev/null
 
 # Download asterisk.
+WORKDIR /tmp
 RUN git clone -b certified/13.8 --depth 1 https://gerrit.asterisk.org/asterisk
 WORKDIR /tmp/asterisk
 
